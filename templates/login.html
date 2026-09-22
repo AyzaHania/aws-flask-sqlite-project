@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Log in · Bloom</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
-<body><header class="site-header"><a class="brand" href="{{ url_for('home') }}">bloom<span>.</span></a><a class="header-link" href="{{ url_for('register') }}">New here? Register →</a></header>
-<main class="page"><div class="auth-wrap"><div class="eyebrow">AWS EC2 · Flask · SQLite</div><h1>Student Portal</h1><p class="intro">Log in to view your saved registration details and manage text-file uploads.</p><section class="card">
+<body><header class="site-header"><span class="brand">Student Portal</span><a class="header-link" href="{{ url_for('register') }}">New here? Register →</a></header>
+<main class="page"><div class="auth-wrap"><div class="eyebrow">Welcome</div><h1>Student Portal</h1><p class="intro">Log in to view your saved registration details and manage text-file uploads.</p><section class="card">
 {% with messages = get_flashed_messages() %}{% for message in messages %}<div class="flash" role="status">{{ message }}</div>{% endfor %}{% endwith %}
 <form method="post" action="{{ url_for('login') }}"><div class="field"><label for="username">Username</label><input id="username" name="username" autocomplete="username" required></div><div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required></div><button class="btn full" type="submit">Log in →</button></form></section><p class="footnote">Don't have an account? <a href="{{ url_for('register') }}">Create one</a></p></div></main></body></html>
