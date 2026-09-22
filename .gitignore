@@ -1,0 +1,21 @@
+# Local SQLite database and journal files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Uploaded user files
+uploads/
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
