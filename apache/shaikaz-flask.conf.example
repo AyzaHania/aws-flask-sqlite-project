@@ -1,0 +1,15 @@
+# Example Apache site configuration; replace ServerName with your EC2 public IP or domain.
+<VirtualHost *:80>
+    ServerName YOUR_EC2_PUBLIC_IP
+
+    WSGIDaemonProcess shaikaz-flask python-path=/home/ubuntu/shaikaz-flask
+    WSGIProcessGroup shaikaz-flask
+    WSGIScriptAlias / /home/ubuntu/shaikaz-flask/flaskapp.wsgi
+
+    <Directory /home/ubuntu/shaikaz-flask>
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/shaikaz-flask-error.log
+    CustomLog ${APACHE_LOG_DIR}/shaikaz-flask-access.log combined
+</VirtualHost>
