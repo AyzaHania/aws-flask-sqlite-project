@@ -1,58 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Profile | Ayza's Flask App</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f3f5fa; margin: 0; padding: 40px 16px; }
-        .container { max-width: 650px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1); }
-        h1, h2 { color: #273b68; }
-        .detail { padding: 10px 0; border-bottom: 1px solid #eee; }
-        .message { padding: 10px; background: #fff3cd; margin-bottom: 12px; border-radius: 6px; }
-        input { margin-top: 10px; }
-        button { display: block; margin-top: 16px; padding: 12px 20px; background: #273b68; color: white; border: none; border-radius: 6px; cursor: pointer; }
-        .upload { padding: 15px; margin-top: 12px; background: #f3f5fa; border-radius: 8px; }
-        a { color: #273b68; }
-        .logout { display: inline-block; margin-top: 25px; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>My Profile</h1>
-        <p>Welcome, {{ user["firstname"] }}!</p>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="message">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        <h2>Registration Details</h2>
-        <div class="detail"><strong>Username:</strong> {{ user["username"] }}</div>
-        <div class="detail"><strong>First Name:</strong> {{ user["firstname"] }}</div>
-        <div class="detail"><strong>Last Name:</strong> {{ user["lastname"] }}</div>
-        <div class="detail"><strong>Email:</strong> {{ user["email"] }}</div>
-        <div class="detail"><strong>Address:</strong> {{ user["address"] }}</div>
-        <h2>Upload a Text File</h2>
-        <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
-            <label for="file">Choose a .txt file:</label>
-            <input type="file" id="file" name="file" accept=".txt" required>
-            <button type="submit">Upload File</button>
-        </form>
-        <h2>My Uploaded Files</h2>
-        {% if uploads %}
-            {% for upload in uploads %}
-                <div class="upload">
-                    <strong>{{ upload["original_filename"] }}</strong>
-                    <p>Word count: {{ upload["word_count"] }}</p>
-                    <a href="{{ url_for('download', upload_id=upload['id']) }}">Download File</a>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No files uploaded yet.</p>
-        {% endif %}
-        <a class="logout" href="{{ url_for('logout') }}">Log Out</a>
-    </div>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>My space · Bloom</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header class="site-header"><a class="brand" href="{{ url_for('home') }}">bloom<span>.</span></a><a class="header-link" href="{{ url_for('logout') }}">Log out →</a></header>
+<main class="page"><section class="hero"><span class="eyebrow">Your personal space</span><h1>Hello, {{ user["firstname"] }} ✿</h1><p>Everything you need, in one little place.</p></section>
+{% with messages = get_flashed_messages() %}{% for message in messages %}<div class="flash" role="status">{{ message }}</div>{% endfor %}{% endwith %}
+<div class="dashboard"><section class="card"><span class="pill">My account</span><h2 style="margin-top:16px">Profile details</h2><dl class="details">
+<div><dt>Username</dt><dd>{{ user["username"] }}</dd></div><div><dt>First name</dt><dd>{{ user["firstname"] }}</dd></div><div><dt>Last name</dt><dd>{{ user["lastname"] }}</dd></div><div><dt>Email</dt><dd>{{ user["email"] }}</dd></div><div><dt>Address</dt><dd>{{ user["address"] }}</dd></div>
+</dl></section><div class="stack"><section class="card"><span class="pill">Text documents</span><h2 style="margin-top:16px">Upload a file</h2><p class="intro">Choose a .txt file and we'll count its words for you.</p><form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data"><div class="upload-zone"><label for="file">Choose your text file</label><input id="file" type="file" name="file" accept=".txt" required><button class="btn" type="submit">Upload document →</button></div></form></section>
+<section class="card"><h2>Your documents</h2>{% if uploads %}{% for upload in uploads %}<div class="file-row"><div><div class="file-name">{{ upload["original_filename"] }}</div><div class="file-meta">{{ upload["word_count"] }} words · Text file</div></div><a href="{{ url_for('download', upload_id=upload['id']) }}">Download ↓</a></div>{% endfor %}{% else %}<p class="empty">No uploads yet. Your documents will appear here ✿</p>{% endif %}</section></div></div></main></body></html>
