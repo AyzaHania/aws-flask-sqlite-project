@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login | Ayza's Flask App</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f3f5fa; margin: 0; padding: 40px 16px; }
+        .container { max-width: 440px; margin: 60px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; color: #273b68; }
+        label { display: block; margin-top: 14px; font-weight: bold; }
+        input { width: 100%; box-sizing: border-box; padding: 11px; margin-top: 6px; border: 1px solid #ccc; border-radius: 6px; font: inherit; }
+        button { width: 100%; margin-top: 22px; padding: 12px; background: #273b68; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        .message { padding: 10px; background: #fff3cd; margin-bottom: 12px; border-radius: 6px; }
+        p { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome Back!</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Log In</button>
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+    </div>
+</body>
+</html>
