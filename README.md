@@ -38,7 +38,7 @@ apache/
 
 1. Launch an Ubuntu EC2 instance, allow HTTP (port 80) and restrict SSH (port 22).
 2. Install `apache2`, `libapache2-mod-wsgi-py3`, `python3-flask`, and `sqlite3`.
-3. Put the project at `/home/ubuntu/shaikaz-flask` (or update the paths in WSGI and Apache config).
+3. Install Python dependencies with `python3 -m pip install -r requirements.txt` in an appropriate virtual environment (or use the distribution-provided Flask package). Put the project at `/home/ubuntu/shaikaz-flask` (or update the paths in WSGI and Apache config).
 4. Create an empty database with `sqlite3 shaikaz.db < schema.sql`. **Do not run this step to replace the existing EC2 database.**
 5. Set permissions so Apache's `www-data` process can read the application, write to the database and its containing directory, and create the uploads directory. Avoid world-writable permissions.
 6. Set a strong private `FLASK_SECRET_KEY` in the Apache/mod_wsgi process environment. Do not publish it.
