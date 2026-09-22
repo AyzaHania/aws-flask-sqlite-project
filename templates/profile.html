@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>My space · Bloom</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>My profile · Student Portal</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
 <body><header class="site-header"><span class="brand">Student Portal</span><a class="header-link" href="{{ url_for('logout') }}">Log out →</a></header>
 <main class="page"><section class="hero"><span class="eyebrow">Welcome</span><h1>Welcome, {{ user["firstname"] }}</h1><p>View your registration details and manage uploaded text files.</p></section>
 {% with messages = get_flashed_messages() %}{% for message in messages %}<div class="flash" role="status">{{ message }}</div>{% endfor %}{% endwith %}
