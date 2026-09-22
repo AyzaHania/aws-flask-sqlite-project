@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>My space · Bloom</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
-<body><header class="site-header"><a class="brand" href="{{ url_for('home') }}">bloom<span>.</span></a><a class="header-link" href="{{ url_for('logout') }}">Log out →</a></header>
-<main class="page"><section class="hero"><span class="eyebrow">Student project · User dashboard</span><h1>Welcome, {{ user["firstname"] }}</h1><p>View your registration details and manage uploaded text files.</p></section>
+<body><header class="site-header"><span class="brand">Student Portal</span><a class="header-link" href="{{ url_for('logout') }}">Log out →</a></header>
+<main class="page"><section class="hero"><span class="eyebrow">Welcome</span><h1>Welcome, {{ user["firstname"] }}</h1><p>View your registration details and manage uploaded text files.</p></section>
 {% with messages = get_flashed_messages() %}{% for message in messages %}<div class="flash" role="status">{{ message }}</div>{% endfor %}{% endwith %}
 <div class="dashboard"><section class="card"><span class="pill">My account</span><h2 style="margin-top:16px">Profile details</h2><dl class="details">
 <div><dt>Username</dt><dd>{{ user["username"] }}</dd></div><div><dt>First name</dt><dd>{{ user["firstname"] }}</dd></div><div><dt>Last name</dt><dd>{{ user["lastname"] }}</dd></div><div><dt>Email</dt><dd>{{ user["email"] }}</dd></div><div><dt>Address</dt><dd>{{ user["address"] }}</dd></div>
