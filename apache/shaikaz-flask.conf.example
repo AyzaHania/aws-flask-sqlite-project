@@ -1,6 +1,8 @@
-# Example Apache site configuration; replace ServerName with your EC2 public IP or domain.
+# Apache virtual host for the EC2 Flask student portal, reflecting the verified server config.
+# Update both addresses if the instance's public IPv4 address changes.
 <VirtualHost *:80>
-    ServerName YOUR_EC2_PUBLIC_IP
+    ServerName ec2-18-225-218-211.us-east-2.compute.amazonaws.com
+    ServerAlias 18.225.218.211
 
     WSGIDaemonProcess shaikaz-flask python-path=/home/ubuntu/shaikaz-flask
     WSGIProcessGroup shaikaz-flask
